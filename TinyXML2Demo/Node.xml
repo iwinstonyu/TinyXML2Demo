@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+  <Message name="clanInfo">
+    <Var name="clanId" type="uint32" init="0"/>
+    <Var name="clanName" type="tstring"/>
+  </Message>
+  
+	<Message name="UserInfoLite">
+		<Var name="roleId" type="uint32" init="0"/>
+		<Var name="roleName" type="tstring"/>
+	</Message>
+	
+	<Message name="UserInfo" base="UserInfoLite">
+		<Var name="vipLev" type="uint32" init="0"/>
+    <Var name="lastLogin" type="uint32" init="0"/>
+    <Var name="clanInfo" type="MsClanInfo"/>
+    <Var name="numVec" type="vector&lt;uint32&gt;"/>
+    <Var name="numMap" type="map&lt;uint32, uint32&gt;"/>
+	</Message>
+</Root>
