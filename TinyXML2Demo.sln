@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TinyXML2Demo", "TinyXML2Demo\TinyXML2Demo.vcxproj", "{8509A755-19A0-41DF-B3CD-490A79ECDF3F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AcgDemo", "AcgDemo\AcgDemo.vcxproj", "{F41E41D6-F89A-4BCF-B2F9-F34000093EE3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8509A755-19A0-41DF-B3CD-490A79ECDF3F} = {8509A755-19A0-41DF-B3CD-490A79ECDF3F}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

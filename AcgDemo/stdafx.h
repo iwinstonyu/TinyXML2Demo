@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <tchar.h>
 
+typedef unsigned int uint32;
+
 
 
 // TODO:  在此处引用程序需要的其他头文件

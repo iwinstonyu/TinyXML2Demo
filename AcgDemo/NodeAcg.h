@@ -1,3 +1,5 @@
+#pragma once
+  
 #include <stdio.h>
 #include <iostream>
 #include <string>
@@ -5,13 +7,9 @@
 #include <set>
 #include <vector>
 #include <sstream>
+#include <algorithm>
 using namespace std;
-
-
-typedef unsigned int uint32;
-typedef string tstring;
-
-
+  
 class MsItemData
 {
 public:
@@ -30,7 +28,7 @@ public:
 
 public:
 	uint32 clanId;
-	tstring clanName;
+	string clanName;
 };
 
 
@@ -41,7 +39,7 @@ public:
 
 public:
 	uint32 roleId;
-	tstring roleName;
+	string roleName;
 };
 
 
@@ -62,59 +60,88 @@ public:
 };
 
 
-string DebugClass(class MsItemData& mb)
+string DebugClass(const class MsItemData& mb)
 {
 	ostringstream oss;
-	oss << mb.idItemType;
-	oss << mb.amount;
+	oss << "{ ";
+	oss << "idItemType:" << mb.idItemType << " ";
+	oss << "amount:" << mb.amount << " ";
+	oss << "} ";
 	return oss.str();
 }
-string DebugClass(class MsClanInfo& mb)
+string DebugClass(const class MsClanInfo& mb)
 {
 	ostringstream oss;
-	oss << mb.clanId;
-	oss << mb.clanName;
+	oss << "{ ";
+	oss << "clanId:" << mb.clanId << " ";
+	oss << "clanName:" << mb.clanName << " ";
+	oss << "} ";
 	return oss.str();
 }
-string DebugClass(class MsUserInfoLite& mb)
+string DebugClass(const class MsUserInfoLite& mb)
 {
 	ostringstream oss;
-	oss << mb.roleId;
-	oss << mb.roleName;
+	oss << "{ ";
+	oss << "roleId:" << mb.roleId << " ";
+	oss << "roleName:" << mb.roleName << " ";
+	oss << "} ";
 	return oss.str();
 }
-string DebugClass(class MsUserInfo& mb)
+string DebugClass(const class MsUserInfo& mb)
 {
 	ostringstream oss;
-	oss << mb.vipLev;
-	oss << mb.lastLogin;
-	oss << DebugClass(mb.clanInfo);
-	for each (uint32 data in mb.numVec) 
+	oss << "{ ";
+	oss << "MsUserInfoLite: " << DebugClass(static_cast<const MsUserInfoLite&>(mb));
+	oss << "vipLev:" << mb.vipLev << " ";
+	oss << "lastLogin:" << mb.lastLogin << " ";
+	oss << "clanInfo:" << DebugClass(mb.clanInfo);
+	oss << "numVec:" << "[ ";
+	for_each(mb.numVec.begin(), mb.numVec.end(), [&oss](const uint32& data)->void
 	{
-	oss << data;
-	}
-	for each (pair<uint32, uint32> data in mb.numMap) 
+		oss << data << " ";
+	});
+	oss << "] ";
+	oss << "numMap:" << "{ ";
+	for_each(mb.numMap.begin(), mb.numMap.end(), [&oss](const pair<uint32,uint32>& data)->void
 	{
-	oss << data.first;
-	oss << data.second;
-	}
-	for each (MsItemData data in mb.itemVec) 
+		oss << "[ ";
+		oss << data.first << " ";
+		oss << data.second << " ";
+		oss << "]";
+	});
+	oss << " } ";
+	oss << "itemVec:" << "[ ";
+	for_each(mb.itemVec.begin(), mb.itemVec.end(), [&oss](const MsItemData& data)->void
 	{
-	oss << DebugClass(data);
-	}
-	for each (pair<uint32, MsItemData> data in mb.itemMap) 
+		oss << DebugClass(data);
+	});
+	oss << "] ";
+	oss << "itemMap:" << "{ ";
+	for_each(mb.itemMap.begin(), mb.itemMap.end(), [&oss](const pair<uint32,MsItemData>& data)->void
 	{
-	oss << data.first;
-	oss << DebugClass(data.second);
-	}
-	for each (pair<uint32, map<uint32,MsItemData>> data in mb.itemMapMap) 
+		oss << "[ ";
+		oss << data.first << " ";
+		oss << DebugClass(data.second);
+		oss << "]";
+	});
+	oss << " } ";
+	oss << "itemMapMap:" << "{ ";
+	for_each(mb.itemMapMap.begin(), mb.itemMapMap.end(), [&oss](const pair<uint32,map<uint32,MsItemData>>& data)->void
 	{
-	oss << data.first;
-	for each (pair<uint32, MsItemData> data in data.second) 
-	{
-	oss << data.first;
-	oss << DebugClass(data.second);
-	}
-	}
+		oss << "[ ";
+		oss << data.first << " ";
+		oss << "{ ";
+		for_each(data.second.begin(), data.second.end(), [&oss](const pair<uint32,MsItemData>& data)->void
+		{
+			oss << "[ ";
+			oss << data.first << " ";
+			oss << DebugClass(data.second);
+			oss << "]";
+		});
+		oss << " } ";
+		oss << "]";
+	});
+	oss << " } ";
+	oss << "} ";
 	return oss.str();
 }

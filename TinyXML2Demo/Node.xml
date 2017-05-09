@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Root>
+  <CppText>#pragma once
+  
+#include &lt;stdio.h&gt;
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;sstream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+  </CppText>
+  
   <Message name="ItemData">
     <Var name="idItemType" type="uint32" init="0"/>
     <Var name="amount" type="uint32" init="0"/>
@@ -7,12 +20,12 @@
   
   <Message name="ClanInfo">
     <Var name="clanId" type="uint32" init="0"/>
-    <Var name="clanName" type="tstring"/>
+    <Var name="clanName" type="string"/>
   </Message>
   
 	<Message name="UserInfoLite">
 		<Var name="roleId" type="uint32" init="0"/>
-		<Var name="roleName" type="tstring"/>
+		<Var name="roleName" type="string"/>
 	</Message>
 	
 	<Message name="UserInfo" base="UserInfoLite">
