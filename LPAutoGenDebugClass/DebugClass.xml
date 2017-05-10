@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+  <CppText>#pragma once
+
+#include &lt;stdio.h&gt;
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;sstream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+  </CppText>
+  
+  <DebugClass>
+    <Var name="ItemData"/>
+    <Var name="ClanInfo"/>
+    <Var name="UserInfoLite"/>
+    <Var name="UserInfo"/>
+    <Var name="LgnInfo"/>
+  </DebugClass>
+
+</Root>

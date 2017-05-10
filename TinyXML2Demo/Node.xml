@@ -38,4 +38,9 @@ using namespace std;
     <Var name="itemMap" type="map&lt;uint32,MsItemData&gt;"/>
     <Var name="itemMapMap" type="map&lt;uint32,map&lt;uint32,MsItemData&gt;&gt;"/>
   </Message>
+
+  <Struct name="LgnInfo">
+    <Var name="lgnId" type="uint32" init="0"/>
+    <Var name="lgnName" type="string"/>
+  </Struct>
 </Root>
