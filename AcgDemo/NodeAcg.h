@@ -60,6 +60,17 @@ public:
 };
 
 
+class MsLgnInfo
+{
+public:
+	MsLgnInfo(){}
+
+public:
+	uint32 lgnId;
+	string lgnName;
+};
+
+
 string DebugClass(const class MsItemData& mb)
 {
 	ostringstream oss;
@@ -142,6 +153,15 @@ string DebugClass(const class MsUserInfo& mb)
 		oss << "]";
 	});
 	oss << " } ";
+	oss << "} ";
+	return oss.str();
+}
+string DebugClass(const class MsLgnInfo& mb)
+{
+	ostringstream oss;
+	oss << "{ ";
+	oss << "lgnId:" << mb.lgnId << " ";
+	oss << "lgnName:" << mb.lgnName << " ";
 	oss << "} ";
 	return oss.str();
 }

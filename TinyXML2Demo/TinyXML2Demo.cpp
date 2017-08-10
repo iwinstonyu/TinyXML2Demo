@@ -238,6 +238,15 @@ int main()
 	//printf("/\\");
 	//printf("\n");
 
+	if ((void)0, 0)
+	{
+		printf("i am void 0\n");
+	}
+	else
+	{
+		printf("i am not void 0\n");
+	}
+
 	AutoGenClass();
 	AutoGenDebugClass();
 

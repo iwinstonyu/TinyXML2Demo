@@ -4,13 +4,27 @@
 #include "stdafx.h"
 #include <stdio.h>
 #include <iostream>
+#include <string>
 #include "NodeAcg.h"
+#include "tinyxml2.h"
 using namespace std;
 
+//void testthrow() throw()
+//{
+//	throw 1;
+//}
 
 int main()
 {
 	printf("acg demo\n");
+
+	__int64 a = 11111111111111111;
+	printf("%lld\n", a);
+	printf("%I64d\n", a);
+
+	long long b = 22222222222222222;
+	printf("%lld\n", b);
+	printf("%I64d\n", b);
 
 	MsItemData item;
 	item.idItemType = 1;
@@ -55,6 +69,13 @@ int main()
 	}
 
 	cout << "userInfo: " << DebugClass(userInfo) << endl;
+
+	tinyxml2::XMLDocument document;
+	tinyxml2::XMLHandle docHandle(&document);
+	tinyxml2::XMLElement* child2 = docHandle.FirstChildElement("Document").FirstChildElement("Element").FirstChildElement().NextSiblingElement().ToElement();
+	if (child2)
+	{
+	}
 
 	system("pause");
     return 0;
